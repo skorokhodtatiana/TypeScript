@@ -59,3 +59,18 @@ var secondLesson = () => {
 };
 
 secondLesson();
+
+//3 УРОК
+
+function compareNumber(a: number): void {
+	if (a === 0 || a === 2) {
+		console.log(a + 7);
+	} else {
+		console.log(a / 10);
+	}
+};
+
+compareNumber(5);
+compareNumber(0);
+compareNumber(-3);
+compareNumber(2);
