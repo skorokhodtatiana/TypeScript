@@ -61,16 +61,63 @@ var secondLesson = () => {
 secondLesson();
 
 //3 УРОК
-
+//1
 function compareNumber(a: number): void {
-	if (a === 0 || a === 2) {
-		console.log(a + 7);
-	} else {
-		console.log(a / 10);
-	}
+	a === 0 || a === 2 ? console.log(a + 7) : console.log(a / 10);
 };
 
 compareNumber(5);
 compareNumber(0);
 compareNumber(-3);
 compareNumber(2);
+
+//2 Если переменная a равна нулю, то выведите в консоль 'Верно', иначе выведите 'Неверно'. 
+function displayWord (a: number): void{
+	if (a === 0) {
+		console.log('Верно');
+	} else {
+		console.log('Неверно');
+	}
+};
+
+displayWord(7);
+displayWord(0);
+displayWord(1);
+
+//3 Переменная lang может принимать 2 значения: 'ru' 'en'. Если она имеет значение 'ru', 
+//то в переменную arr запишем массив дней недели на русском языке, а если имеет значение 'en', то на английском.
+//Решите задачу через if и через switch-case.
+
+function writeArr(lang: string){
+	let arr: Array<string>; 
+	if (lang === 'ru') {
+		arr=['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс'];
+		return arr;
+	} else if (lang === 'en') {
+		arr = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+		return arr;
+	}
+};
+
+console.log(writeArr('ru'));
+
+function writeNextArr(lang: string): Array<any>{
+	let arr: Array<string>; 
+	switch(lang){
+		case 'ru': {
+			arr=['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс'];
+			return arr
+			break
+		}
+		case 'en': {
+			arr = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+			return arr;
+			break
+		}
+		default: {
+			return arr=[];
+		}
+	}
+};
+
+console.log(writeNextArr('en'))
