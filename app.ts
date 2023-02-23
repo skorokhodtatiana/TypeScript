@@ -120,4 +120,56 @@ function writeNextArr(lang: string): Array<any>{
 	}
 };
 
-console.log(writeNextArr('en'))
+console.log(writeNextArr('en'));
+
+//4С помощью логических ветвлений рассчитайте, какую сумму работник должен перечислить на налог
+//и какую сумму он получит на руки, если налоги начисляются таким образом:
+//Зарплата до 6000 включительно — 10%;
+//Зарплата до 10 000 включительно — 15%;
+//Зарплата до 15 000 включительно — 17.5%;
+//Зарплата свыше 15 000 — 20%.
+
+function calculatesalary(salary: number){
+	let salaryHand: number;
+	let tax: number;
+	if (salary <= 6000) {
+		tax = salary * 0.1;
+		salaryHand = salary - tax;
+		return {tax: tax, salaryHand: salaryHand};
+	} else if (salary <= 10000) {
+		tax = salary * 0.15;
+		salaryHand = salary - tax;
+		return {tax: tax, salaryHand: salaryHand};
+	} else if (salary <= 15000) {
+		tax = salary * 0.175;
+		salaryHand = salary - tax;
+		return {tax: tax, salaryHand: salaryHand};
+	} else {
+		tax = salary * 0.2;
+		salaryHand = salary - tax;
+		return {tax: tax, salaryHand: salaryHand};
+	}
+};
+
+console.log(calculatesalary(8000));
+
+//Выведите столбец чисел от 1 до 50 с помощью цикла.
+function showNumberCucle(num: number){
+	for(let i=1; i<=50; i++) {
+		console.log(i);
+	}
+};
+
+showNumberCucle(50);
+
+//Дан массив с элементами [2, 3, 4, 5]. С помощью цикла for выведите все числа в столбец вместе с текстом ‘Результат: ’.
+function showResultCucle(arr: Array<any>){
+	for(let i=0; i<arr.length; i++) {
+		console.log(`Результат: ${arr[i]}`);
+	}
+};
+
+showResultCucle( [2, 3, 4, 5]);
+
+//
+
