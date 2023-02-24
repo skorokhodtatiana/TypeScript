@@ -163,13 +163,26 @@ function showNumberCucle(num: number){
 showNumberCucle(50);
 
 //Дан массив с элементами [2, 3, 4, 5]. С помощью цикла for выведите все числа в столбец вместе с текстом ‘Результат: ’.
-function showResultCucle(arr: Array<any>){
+function showResultCycle(arr: Array<any>){
 	for(let i=0; i<arr.length; i++) {
 		console.log(`Результат: ${arr[i]}`);
 	}
 };
 
-showResultCucle( [2, 3, 4, 5]);
+showResultCycle( [2, 3, 4, 5]);
 
-//
+//используя for-in вывести данные
+function displayCycle() {
+	let obj = {
+		'кот': 'мяу',
+		'собака': 'гав',
+		'корова': 'муу',
+	};
+
+	for(let item in obj) {
+		console.log(item + ' говорит ' + obj[item]);
+	}
+};
+
+displayCycle();
 
