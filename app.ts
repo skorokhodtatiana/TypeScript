@@ -61,9 +61,14 @@ var secondLesson = () => {
 secondLesson();
 
 //3 УРОК
-//1
-function compareNumber(a: number): void {
-	a === 0 || a === 2 ? console.log(a + 7) : console.log(a / 10);
+//1 Если переменная a  равна нулю или равна двум, то прибавьте к ней 7, иначе поделите её на 10
+function compareNumber(a: number):void {
+	const block = document.querySelector('.ts-block');
+	if (block && (a === 0 || a === 2)) {
+		block.innerHTML=(a + 7).toString();
+	} else  if (block) {
+		block.innerHTML=(a / 10).toString();
+	}
 };
 
 compareNumber(5);
@@ -185,4 +190,3 @@ function displayCycle() {
 };
 
 displayCycle();
-
