@@ -29,3 +29,38 @@ Alex.displayConsol();
 
 //Создайте пример наследования через абстрактный класс и через интерфейс,
 //реализуйте класс Student и класс Aspirant, аспирант отличается от студента наличием некой научной работы.
+
+abstract class Educated {
+	constructor(
+		name: string,
+		restEducation: number,
+	) {}
+	abstract showResult();
+};
+
+class Student extends Educated {
+	showResult(): void {
+		console.log('сдает лабораторные');
+	}
+}
+
+const Pet = new Student('pet', 2);
+Pet.showResult();
+
+class Aspirant extends Educated {
+	coursework: string;
+	constructor(
+		coursework: string,
+		name: string,
+		restEducation: number,
+	) {
+		super(name, restEducation)
+		this.coursework = coursework
+	}
+	showResult(): void {
+		console.log('пишет курсовую');
+	}
+}
+
+const Pol = new Aspirant('pol', 'newCoursWork', 1 );
+Pol.showResult();
