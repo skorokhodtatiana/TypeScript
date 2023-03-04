@@ -67,3 +67,28 @@ var Aspirant = /** @class */ (function (_super) {
 }(Educated));
 var Pol = new Aspirant('pol', 'newCoursWork', 1);
 Pol.showResult();
+//5Если средняя оценка студента равна 5, то сумма 200, иначе 150. 
+var Student2 = /** @class */ (function () {
+    function Student2(cours, gpa) {
+        this.cours = cours,
+            this.gpa = gpa;
+    }
+    Student2.prototype.getScholarship = function () {
+        this.gpa === 5 ? console.log(200) : console.log(150);
+    };
+    return Student2;
+}());
+var OneStudent = new Student2(4, 4);
+OneStudent.getScholarship();
+var Aspirant2 = /** @class */ (function (_super) {
+    __extends(Aspirant2, _super);
+    function Aspirant2(cours, gpa) {
+        return _super.call(this, cours, gpa) || this;
+    }
+    Aspirant2.prototype.getScholarship = function () {
+        this.gpa === 5 ? console.log(300) : console.log(250);
+    };
+    return Aspirant2;
+}(Student2));
+var OneAspirant = new Aspirant2(2, 5);
+OneAspirant.getScholarship();
