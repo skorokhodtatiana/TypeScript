@@ -33,7 +33,7 @@ var Nastja = new Person('Nastja', 14, false);
 Nastja.displayConsol();
 var Alex = new Person('Alex', 20, true);
 Alex.displayConsol();
-//Создайте пример наследования через абстрактный класс и через интерфейс,
+//4 Создайте пример наследования через абстрактный класс и через интерфейс,
 //реализуйте класс Student и класс Aspirant, аспирант отличается от студента наличием некой научной работы.
 var Educated = /** @class */ (function () {
     function Educated(name, restEducation) {
@@ -67,7 +67,7 @@ var Aspirant = /** @class */ (function (_super) {
 }(Educated));
 var Pol = new Aspirant('pol', 'newCoursWork', 1);
 Pol.showResult();
-//5Если средняя оценка студента равна 5, то сумма 200, иначе 150. 
+//5 Если средняя оценка студента равна 5, то сумма 200, иначе 150. 
 var Student2 = /** @class */ (function () {
     function Student2(cours, gpa) {
         this.cours = cours,
@@ -92,3 +92,58 @@ var Aspirant2 = /** @class */ (function (_super) {
 }(Student2));
 var OneAspirant = new Aspirant2(2, 5);
 OneAspirant.getScholarship();
+//6
+// Создайте классы для описания интернет-магазина.
+// У него должны быть несколько категорий товаров (с названием и ценой),
+// покупатели (которые для покупки должны зарегистрироваться,
+// соответственно у покупателя будет пароль, логин и история покупок),
+// корзина. Также должны быть методы: добавить в корзину, купить, зарегистрироваться,
+// войти в аккаунт.
+var Item = /** @class */ (function () {
+    function Item(name, price, date, count, category) {
+    }
+    Item.prototype.addToBasket = function () {
+        console.log("Добавить в корзину этот товар");
+    };
+    return Item;
+}());
+var Food = /** @class */ (function (_super) {
+    __extends(Food, _super);
+    function Food(expirationDate, name, price, date, count, category) {
+        var _this = _super.call(this, name, price, date, count, category) || this;
+        _this.expirationDate = expirationDate;
+        return _this;
+    }
+    return Food;
+}(Item));
+var householdItems = /** @class */ (function (_super) {
+    __extends(householdItems, _super);
+    function householdItems(categoryHome, name, price, date, count, category) {
+        var _this = _super.call(this, name, price, date, count, category) || this;
+        _this.categoryHome = categoryHome;
+        return _this;
+    }
+    return householdItems;
+}(Item));
+var Buyer = /** @class */ (function () {
+    function Buyer(password, login, hystory) {
+        this.password = password;
+        this.login = login;
+        this.hystory = hystory;
+    }
+    Buyer.prototype.register = function () {
+        console.log("Вывести форму для ввода данных при регистрации");
+    };
+    Buyer.prototype.logIn = function () {
+        return "\u0418\u043C\u044F: ".concat(this.login, " \u041F\u0430\u0440\u043E\u043B\u044C: ").concat(this.password);
+    };
+    return Buyer;
+}());
+var Basket = /** @class */ (function () {
+    function Basket(item, amount, price) {
+        this.item = item;
+        this.amount = amount;
+        this.price = amount;
+    }
+    return Basket;
+}());

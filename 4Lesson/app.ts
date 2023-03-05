@@ -115,6 +115,9 @@ class Item {
 		count: number,
 		category: string,
 	) {}
+	addToBasket() {
+		console.log("Добавить в корзину этот товар");
+	}
 }
 
 class Food extends Item {
@@ -129,6 +132,21 @@ class Food extends Item {
 	) {
 		super (name, price, date, count, category);
 		this.expirationDate = expirationDate;
+	}
+}
+
+class householdItems extends Item {
+	categoryHome: string;
+	constructor (
+		categoryHome: string,
+		name: string,
+		price: string,
+		date: number,
+		count: number,
+		category: string,
+	) {
+		super (name, price, date, count, category);
+		this.categoryHome = categoryHome;
 	}
 }
 
@@ -147,8 +165,26 @@ class Buyer {
 		this.login = login;
 		this.hystory = hystory;
 	}
-	byu() {
-		console.log("Купил то и это");
+	register(): void {
+		console.log("Вывести форму для ввода данных при регистрации");
+	}
+
+	logIn(): string {
+		return `Имя: ${this.login} Пароль: ${this.password}`;
 	}
 }
 
+class Basket {
+	item: string;
+	amount: number;
+	price: number;
+	constructor (
+		item: string,
+		amount: number,
+		price: number,
+	) {
+		this.item = item;
+		this.amount = amount;
+		this.price = amount;
+	}
+}
