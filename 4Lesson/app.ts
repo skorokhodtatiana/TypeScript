@@ -31,20 +31,30 @@ Alex.displayConsol();
 //реализуйте класс Student и класс Aspirant, аспирант отличается от студента наличием некой научной работы.
 
 abstract class Educated {
+	name: string;
+	restEducation: number;
 	constructor(
 		name: string,
 		restEducation: number,
-	) {}
+	) {
+		this.name = name;
+		this.restEducation = restEducation;
+	}
 	abstract showResult();
 };
 
 class Student extends Educated {
+	constructor(name: string,
+		restEducation: number,) {
+			super(name, restEducation)
+		}
 	showResult(): void {
 		console.log('сдает лабораторные');
 	}
 }
 
 const Pet = new Student('pet', 2);
+console.log(Pet.name);
 Pet.showResult();
 
 class Aspirant extends Educated {
@@ -63,6 +73,7 @@ class Aspirant extends Educated {
 }
 
 const Pol = new Aspirant('pol', 'newCoursWork', 1 );
+console.log(Pol.name);
 Pol.showResult();
 
 //5 Если средняя оценка студента равна 5, то сумма 200, иначе 150. 
@@ -178,13 +189,27 @@ class Basket {
 	item: string;
 	amount: number;
 	price: number;
+	list: Array<string>;
 	constructor (
 		item: string,
 		amount: number,
 		price: number,
+		list: Array<string>
 	) {
 		this.item = item;
 		this.amount = amount;
-		this.price = amount;
+		this.price = price;
+		this.list = list;
+	}
+	addItem(): string {
+		return this.item;
+	}
+
+	deletItem(): void {
+		this.item = '';
 	}
 }
+const cat = new Basket('item',1, 1000, []);
+
+console.log(cat.deletItem())
+

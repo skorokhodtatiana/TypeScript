@@ -13,7 +13,7 @@ function echo <T>(val: T): T {
 echo("nnnn");
 
 //Создать обобщённый класс с тремя параметрами (T, V, K).
-class Person <T, V, K>{
+class Person <T, V, K> {
 	name: T;
 	login: V;
 	password: K;

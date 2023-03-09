@@ -43,8 +43,8 @@ var Educated = /** @class */ (function () {
 ;
 var Student = /** @class */ (function (_super) {
     __extends(Student, _super);
-    function Student() {
-        return _super !== null && _super.apply(this, arguments) || this;
+    function Student(name, restEducation) {
+        return _super.call(this, name, restEducation) || this;
     }
     Student.prototype.showResult = function () {
         console.log('сдает лабораторные');
@@ -52,6 +52,7 @@ var Student = /** @class */ (function (_super) {
     return Student;
 }(Educated));
 var Pet = new Student('pet', 2);
+console.log(Pet.name);
 Pet.showResult();
 var Aspirant = /** @class */ (function (_super) {
     __extends(Aspirant, _super);
@@ -66,6 +67,7 @@ var Aspirant = /** @class */ (function (_super) {
     return Aspirant;
 }(Educated));
 var Pol = new Aspirant('pol', 'newCoursWork', 1);
+console.log(Pol.name);
 Pol.showResult();
 //5 Если средняя оценка студента равна 5, то сумма 200, иначе 150. 
 var Student2 = /** @class */ (function () {
@@ -140,10 +142,19 @@ var Buyer = /** @class */ (function () {
     return Buyer;
 }());
 var Basket = /** @class */ (function () {
-    function Basket(item, amount, price) {
+    function Basket(item, amount, price, list) {
         this.item = item;
         this.amount = amount;
-        this.price = amount;
+        this.price = price;
+        this.list = list;
     }
+    Basket.prototype.addItem = function () {
+        return this.item;
+    };
+    Basket.prototype.deletItem = function () {
+        this.item = '';
+    };
     return Basket;
 }());
+var cat = new Basket('item', 1, 1000, []);
+console.log(cat.deletItem());
