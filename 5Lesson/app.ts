@@ -5,7 +5,7 @@ function echo <T>(val: T): T {
 		console.log(val);
 		return val;
 	} else {
-		console.log('Hy ' + val)
+		console.log('Hi ' + val)
 		return val;
 	}
 }
@@ -33,3 +33,25 @@ class Person <T, V, K> {
 
 const NewPerson = new Person('Tanja', 'login', 'password');
 NewPerson.createAccount();
+
+//Класс содержит три переменные типа (T, V, K), конструктор, принимающий на вход параметры типа (T, V, K), методы,
+//возвращающие значения трёх переменных. Создать метод, выводящий на консоль имена классов для трёх переменных класса.
+
+class ThreeMetod <T, V, K>{
+	first: T;
+	second: V;
+	third: K;
+	constructor(first: T, second: V, third: K){
+		this.first = first;
+		this.second = second;
+		this.third = third;
+	}
+	firstMetod() {
+		if (typeof this.first !== undefined ) {
+			console.log(typeof this.first)
+		} else {
+			console.log(instanceof this.first)
+		}
+		
+	}
+}
