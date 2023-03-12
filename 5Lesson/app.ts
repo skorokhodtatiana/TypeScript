@@ -108,3 +108,20 @@ const veget = new Vegetables(['морковь', 'свекла', 'картофе�
 checkType(fruit);
 checkType(veget);
 
+//5 Создать два обобщённых интерфейса с одним параметром в каждом, создать константу, чей тип будет объединять оба интерфейса.
+
+interface One<T> {
+	name: T;
+}
+
+interface Two<T> {
+	age:T
+}
+
+let newPerson: One<number> & Two<string>;
+
+newPerson = {
+	name: 20, age: 'Tanja'
+}
+
+console.log(newPerson)

@@ -86,3 +86,8 @@ var fruit = new Fruits(['яблоко', 'груша', 'апельсин']);
 var veget = new Vegetables(['морковь', 'свекла', 'картофель']);
 checkType(fruit);
 checkType(veget);
+var newPerson;
+newPerson = {
+    name: 20, age: 'Tanja'
+};
+console.log(newPerson);
