@@ -1,0 +1,17 @@
+{
+  "name": "6lesson",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "lite-server"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^18.15.3",
+    "lite-server": "^2.6.1",
+    "typescript": "^5.0.2"
+  }
+}
