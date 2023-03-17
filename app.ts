@@ -185,7 +185,7 @@ function displayCycle() {
 	};
 
 	for(let item in obj) {
-		console.log(item + ' говорит ' + obj[item]);
+		console.log(item + ' говорит ' + Object.keys(obj));
 	}
 };
 

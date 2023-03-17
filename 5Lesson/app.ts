@@ -13,7 +13,7 @@ function echo <T>(val: T): T {
 echo("nnnn");
 
 //2 Создать обобщённый класс с тремя параметрами (T, V, K).
-class Person <T, V, K> {
+class PersonL <T, V, K> {
 	name: T;
 	login: V;
 	password: K;
@@ -31,7 +31,7 @@ class Person <T, V, K> {
 	}
 }
 
-const NewPerson = new Person('Tanja', 'login', 'password');
+const NewPerson = new PersonL('Tanja', 'login', 'password');
 NewPerson.createAccount();
 
 //3 Класс содержит три переменные типа (T, V, K), конструктор, принимающий на вход параметры типа (T, V, K), методы,

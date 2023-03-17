@@ -40,7 +40,7 @@ abstract class Educated {
 		this.name = name;
 		this.restEducation = restEducation;
 	}
-	abstract showResult();
+	abstract showResult(): any;
 };
 
 class Student extends Educated {

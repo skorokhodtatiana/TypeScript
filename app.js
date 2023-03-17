@@ -1,15 +1,16 @@
-var secondLesson = function () {
+"use strict";
+var secondLesson = () => {
     //Получите сумму let random1 = 39  let random2 = ‘18’ и выведите в консоль со словом Сумма: перед.
-    var showSum = function (n1, n2, sum) {
-        var sumNumber = +n1 + +n2;
+    const showSum = (n1, n2, sum) => {
+        const sumNumber = +n1 + +n2;
         console.log(sum + sumNumber);
     };
-    var random1 = 39;
-    var random2 = "18";
-    var result = "Сумма: ";
+    let random1 = 39;
+    let random2 = "18";
+    let result = "Сумма: ";
     showSum(random1, random2, result);
     //Создайте массив cities с любыми 4-мя городами внутри
-    var cities = ["Minsk", "Krakow", "Brest", "Orsha"];
+    const cities = ["Minsk", "Krakow", "Brest", "Orsha"];
     console.log(cities);
     //добавьте 1 новый город в начало списка
     cities.unshift("Lida");
@@ -18,11 +19,11 @@ var secondLesson = function () {
     cities.pop();
     console.log(cities);
     //Создайте объект из 4 городов, где ключом будет название города, а значением население этого города
-    var town = {
+    const town = {
         Minsk: 10000,
         Brest: 3000,
         Lida: 1500,
-        Orsha: 1000
+        Orsha: 1000,
     };
     //выводим в консоль ключи
     console.log(Object.keys(town));
@@ -31,21 +32,21 @@ var secondLesson = function () {
     //выводим в консоль  значение первого города.
     console.log(town.Minsk);
     //Создайте 3 enum с данными
-    var Fruits;
+    let Fruits;
     (function (Fruits) {
         Fruits[Fruits["Apple"] = 0] = "Apple";
         Fruits[Fruits["Orange"] = 1] = "Orange";
         Fruits[Fruits["Banana"] = 2] = "Banana";
     })(Fruits || (Fruits = {}));
     ;
-    var Books;
+    let Books;
     (function (Books) {
         Books[Books["Novel"] = 0] = "Novel";
         Books[Books["Detective"] = 1] = "Detective";
         Books[Books["Prose"] = 2] = "Prose";
     })(Books || (Books = {}));
     ;
-    var Cars;
+    let Cars;
     (function (Cars) {
         Cars[Cars["Audi"] = 0] = "Audi";
         Cars[Cars["Lada"] = 1] = "Lada";
@@ -53,20 +54,20 @@ var secondLesson = function () {
     })(Cars || (Cars = {}));
     ;
     //Создайте объект животное (Animal), который содержит название, возраст, является ли животное млекопитающим, домашнее оно или дикое.
-    var animal = {
+    const animal = {
         name: "dog",
         age: 2,
         mammal: true,
-        pet: true
+        pet: true,
     };
     console.log(animal);
-    var MyType = true;
+    let MyType = true;
 };
 secondLesson();
 //3 УРОК
 //1 Если переменная a  равна нулю или равна двум, то прибавьте к ней 7, иначе поделите её на 10
 function compareNumber(a) {
-    var block = document.querySelector('.ts-block');
+    const block = document.querySelector('.ts-block');
     if (block && (a === 0 || a === 2)) {
         block.innerHTML = (a + 7).toString();
     }
@@ -96,7 +97,7 @@ displayWord(1);
 //то в переменную arr запишем массив дней недели на русском языке, а если имеет значение 'en', то на английском.
 //Решите задачу через if и через switch-case.
 function writeArr(lang) {
-    var arr;
+    let arr;
     if (lang === 'ru') {
         arr = ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс'];
         return arr;
@@ -109,7 +110,7 @@ function writeArr(lang) {
 ;
 console.log(writeArr('ru'));
 function writeNextArr(lang) {
-    var arr;
+    let arr;
     switch (lang) {
         case 'ru': {
             arr = ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс'];
@@ -135,8 +136,8 @@ console.log(writeNextArr('en'));
 //Зарплата до 15 000 включительно — 17.5%;
 //Зарплата свыше 15 000 — 20%.
 function calculatesalary(salary) {
-    var salaryHand;
-    var tax;
+    let salaryHand;
+    let tax;
     if (salary <= 6000) {
         tax = salary * 0.1;
         salaryHand = salary - tax;
@@ -162,7 +163,7 @@ function calculatesalary(salary) {
 console.log(calculatesalary(8000));
 //Выведите столбец чисел от 1 до 50 с помощью цикла.
 function showNumberCucle(num) {
-    for (var i = 1; i <= 50; i++) {
+    for (let i = 1; i <= 50; i++) {
         console.log(i);
     }
 }
@@ -170,21 +171,21 @@ function showNumberCucle(num) {
 showNumberCucle(50);
 //Дан массив с элементами [2, 3, 4, 5]. С помощью цикла for выведите все числа в столбец вместе с текстом ‘Результат: ’.
 function showResultCycle(arr) {
-    for (var i = 0; i < arr.length; i++) {
-        console.log("\u0420\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442: ".concat(arr[i]));
+    for (let i = 0; i < arr.length; i++) {
+        console.log(`Результат: ${arr[i]}`);
     }
 }
 ;
 showResultCycle([2, 3, 4, 5]);
 //используя for-in вывести данные
 function displayCycle() {
-    var obj = {
+    let obj = {
         'кот': 'мяу',
         'собака': 'гав',
-        'корова': 'муу'
+        'корова': 'муу',
     };
-    for (var item in obj) {
-        console.log(item + ' говорит ' + obj[item]);
+    for (let item in obj) {
+        console.log(item + ' говорит ' + Object.keys(obj));
     }
 }
 ;
