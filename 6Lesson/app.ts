@@ -5,45 +5,22 @@ const cart = new ShopingCart([{name: 'tomate', price: 300}]);
 console.log(cart);
 
 //1 Создать класс User и у него декоратор, который будет генерировать id (с помощью встроенной в Typescript функции Random).
-// function creatId (constructor: Function) {
-// 	let createId = Math.random();
-// 	return class extends constructor {
-// 		public id = createId;
-// 		name: String;
-// 		age: Number;
-// 	}
-// }
+type Constructable = {new (...args: any[]): any; };
 
-// @creatId
-// class User {
-// 	name: String;
-// 	age: Number;
-// 	id: Number;
-// 	constructor (name: String, age: Number) {
-// 		this.name = name;
-// 		this.age = age;
-		
-// 	}
-// }
-
-// const petja = new User('Petja', 45, );
-// console.log(petja);
-
-function creatId (constructor: Function) {
-	let id = Math.random();
-	//console.log(id);
+function creatId (constructor: Constructable) {
+	const generatedId = Math.random();
+	return class extends constructor {
+		public id = generatedId;
+	}
 }
 
 @creatId
 class User {
-	id: Number;
-	constructor(id: Number) {
-		this.id = id
-	}
+	public id: Number;
 }
 
-// const petja = new User(constructor);
-console.log(User);
+const newUserOne = new User;
+console.log(newUserOne.id);
 
 // 2. У класса User должны быть поля:
 // - name: string;
@@ -61,18 +38,18 @@ const notChangeRegistrationDate = (target: Object, propertyKey: String): any => 
 }
 class UserTwo {
 	name: String;
-	//@notChangeRegistrationDate
+	@notChangeRegistrationDate
 	registrationDate: Date;
-	orderHistory: Array<String>;
-	constructor (name: String, registrationDate: Date, orderHistory: Array<String>) {
+	orderHistory: Array<Object>;
+	constructor (name: String, registrationDate: Date, orderHistory: Array<Object>) {
 		this.name = name;
 		this.registrationDate = registrationDate;
 		this.orderHistory = orderHistory;
 	}
 }
 const date = new Date(2021, 1, 20);
-const order = ["стул"];
-const newUserTwo = new UserTwo('Petja', date, order);
+const ord = [{name: "стул", price: 3}];
+const newUserTwo = new UserTwo('Petja', date, ord);
 console.log(newUserTwo);
 
 // 3 Создать геттер для поля name и сеттер для добавления новой позиции в orderHistory.

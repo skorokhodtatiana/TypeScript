@@ -10,42 +10,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 import { ShopingCart } from './5Task.js';
 const cart = new ShopingCart([{ name: 'tomate', price: 300 }]);
 console.log(cart);
-//1 Создать класс User и у него декоратор, который будет генерировать id (с помощью встроенной в Typescript функции Random).
-// function creatId (constructor: Function) {
-// 	let createId = Math.random();
-// 	return class extends constructor {
-// 		public id = createId;
-// 		name: String;
-// 		age: Number;
-// 	}
-// }
-// @creatId
-// class User {
-// 	name: String;
-// 	age: Number;
-// 	id: Number;
-// 	constructor (name: String, age: Number) {
-// 		this.name = name;
-// 		this.age = age;
-// 	}
-// }
-// const petja = new User('Petja', 45, );
-// console.log(petja);
 function creatId(constructor) {
-    let id = Math.random();
-    //console.log(id);
+    const generatedId = Math.random();
+    return class extends constructor {
+        constructor() {
+            super(...arguments);
+            this.id = generatedId;
+        }
+    };
 }
 let User = class User {
-    constructor(id) {
-        this.id = id;
-    }
 };
 User = __decorate([
-    creatId,
-    __metadata("design:paramtypes", [Number])
+    creatId
 ], User);
-// const petja = new User(constructor);
-console.log(User);
+const newUserOne = new User;
+console.log(newUserOne.id);
 // 2. У класса User должны быть поля:
 // - name: string;
 // - registrationDate: Date;
@@ -64,9 +44,13 @@ class UserTwo {
         this.orderHistory = orderHistory;
     }
 }
+__decorate([
+    notChangeRegistrationDate,
+    __metadata("design:type", Date)
+], UserTwo.prototype, "registrationDate", void 0);
 const date = new Date(2021, 1, 20);
-const order = ["стул"];
-const newUserTwo = new UserTwo('Petja', date, order);
+const ord = [{ name: "стул", price: 3 }];
+const newUserTwo = new UserTwo('Petja', date, ord);
 console.log(newUserTwo);
 // 3 Создать геттер для поля name и сеттер для добавления новой позиции в orderHistory.
 export class UserThree {
