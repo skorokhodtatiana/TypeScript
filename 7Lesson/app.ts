@@ -9,3 +9,20 @@ class Cart {
 		this.num = num;
 	}
 }
+
+interface addToCart<T> {
+	// addToCart(): T {
+	// 	console.log('Добавить в корзину');
+	// 	return Tanja;
+	// }
+	addToCart(): T;
+}
+
+interface addToMessage<T> {
+	// addToCart(): T {
+	// 	console.log('Добавить в корзину');
+	// 	return Tanja;
+	// }
+	addToMessage(): T;
+}
+
