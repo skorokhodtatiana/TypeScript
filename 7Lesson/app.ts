@@ -1,4 +1,13 @@
-class Cart {
+
+
+interface addToCart {
+	addToCart(): any;
+}
+
+interface addToMessage {
+	addToMessage(): any;
+}
+class Cart implements addToMessage, addToMessage {
 	name: String;
 	price: Number;
 	num: Number;
@@ -8,21 +17,10 @@ class Cart {
 		this.price = price;
 		this.num = num;
 	}
+	addToMessage() {
+		console.log('Вывести сообщение');
+	}
+	addToCart(){
+		console.log('Добавить в корзину');
+	}
 }
-
-interface addToCart<T> {
-	// addToCart(): T {
-	// 	console.log('Добавить в корзину');
-	// 	return Tanja;
-	// }
-	addToCart(): T;
-}
-
-interface addToMessage<T> {
-	// addToCart(): T {
-	// 	console.log('Добавить в корзину');
-	// 	return Tanja;
-	// }
-	addToMessage(): T;
-}
-
