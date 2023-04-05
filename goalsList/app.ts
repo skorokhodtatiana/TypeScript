@@ -92,7 +92,6 @@ abstract class Component<T extends HTMLElement, U extends HTMLElement> {
         this.descriptionUnputElement.value = '';
     }
 }
-
 interface Validation{
     value: String;
     minLength: number;
@@ -107,8 +106,6 @@ function validate(validationInput: Validation) {
         return false
     }
 }
-
-
 class TodosList extends Component<HTMLDivElement, HTMLElement>{
     todosList: Todo[];
 
@@ -120,8 +117,6 @@ class TodosList extends Component<HTMLDivElement, HTMLElement>{
         this.renderContent();
     }
 
- 
-
     private renderTodo() {
         const listEl = document.getElementById(`${this.type}-todo-list`)! as HTMLUListElement;
         listEl.innerHTML = '';
@@ -129,7 +124,6 @@ class TodosList extends Component<HTMLDivElement, HTMLElement>{
             new TodoItem(this.element.id,todoItem)
         }
     }
-    
 
     configure() {
         todosState.addListener((todos: Todo[]) => {
@@ -156,7 +150,6 @@ enum TodoStatus {
     Active,
     Finished
   }
-  
   class Todo {
     constructor(
       public id: string,
@@ -168,7 +161,6 @@ enum TodoStatus {
 
 // Todos State Management
 type Listener = (items: Todo[]) => void;
-
 
 class TodosState
  {
