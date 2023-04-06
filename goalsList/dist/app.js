@@ -1,19 +1,31 @@
 "use strict";
-class InputElement {
+// Component Base Class
+class Component {
+    constructor(templateId, hostElementId, insertAtStart, newElementId) {
+        this.templateElement = document.getElementById(templateId);
+        this.hostElement = document.getElementById(hostElementId);
+        const importedNode = document.importNode(this.templateElement.content, true);
+        this.element = importedNode.firstElementChild;
+        if (newElementId) {
+            this.element.id = newElementId;
+        }
+        this.attach(insertAtStart);
+    }
+    attach(insertAtBeginning) {
+        this.hostElement.insertAdjacentElement(insertAtBeginning ? 'afterbegin' : 'beforeend', this.element);
+    }
+}
+class InputElement extends Component {
     constructor() {
-        this.templateComponent = document.getElementById('project-input');
-        this.divComponent = document.getElementById('app');
-        const nodeFromHtml = document.importNode(this.templateComponent.content, true);
-        this.element = nodeFromHtml.firstElementChild;
-        this.element.id = "user-input";
-        this.attach();
-        this.submit();
+        super('project-input', 'app', true, 'user-input');
         this.titleUnputElement = this.element.querySelector('#title');
         this.descriptionUnputElement = this.element.querySelector('#description');
+        this.configure();
     }
-    submit() {
+    configure() {
         this.element.addEventListener('submit', this.submitHandler.bind(this));
     }
+    renderContent() { }
     submitHandler(event) {
         event.preventDefault();
         const userInput = this.getUserInput();
@@ -21,7 +33,7 @@ class InputElement {
             const [title, desc] = userInput;
             console.log(title, desc);
             todosState.addTodo(title, desc);
-            //this.clearInputs();
+            this.clearInputs();
         }
     }
     getUserInput() {
@@ -35,10 +47,8 @@ class InputElement {
             minLength: 5,
             maxLength: 200
         };
-        if (validate(validateTitle) && validate(validateDescription)) {
-            const titleInput = this.titleUnputElement.value;
-            const descriptionInput = this.descriptionUnputElement.value;
-            return [titleInput, descriptionInput];
+        if (!validate(validateTitle) || !validate(validateDescription)) {
+            return alert('Invalid input');
         }
         else {
             const titleInput = this.titleUnputElement.value;
@@ -46,8 +56,9 @@ class InputElement {
             return [titleInput, descriptionInput];
         }
     }
-    attach() {
-        this.divComponent.insertAdjacentElement('afterbegin', this.element);
+    clearInputs() {
+        this.titleUnputElement.value = '';
+        this.descriptionUnputElement.value = '';
     }
 }
 function validate(validationInput) {
@@ -58,49 +69,37 @@ function validate(validationInput) {
         return false;
     }
 }
-class TodosList {
+class TodosList extends Component {
     constructor(type) {
+        super('todo-list', 'app', false, `${type}-todos`);
         this.type = type;
-        this.templateComponent = document.getElementById('project-list');
-        this.divComponent = document.getElementById('app');
-        const nodeFromHtml = document.importNode(this.templateComponent.content, true);
-        this.element = nodeFromHtml.firstElementChild;
-        this.element.id = `${this.type}-todos`; // здесь было todos
-        todosState.addListener((todos) => {
-            this.todosList = todos;
-            this.renderTodo();
-        });
-        this.attach();
+        this.todosList = [];
+        this.configure();
         this.renderContent();
     }
     renderTodo() {
         const listEl = document.getElementById(`${this.type}-todo-list`);
         listEl.innerHTML = '';
         for (const todoItem of this.todosList) {
-            const listItem = document.createElement('li');
-            listItem.textContent = todoItem.title;
-            listEl.appendChild(listItem);
+            new TodoItem(this.element.id, todoItem);
         }
     }
-    renderContent() {
-        const listId = `${this.type}-todo-list`;
-        this.element.querySelector('ul').id = listId;
-        this.element.querySelector('h2').textContent = this.type.toLocaleUpperCase() + ' GOALS';
+    configure() {
         todosState.addListener((todos) => {
             const todosFiltered = todos.filter(todo => {
                 if (this.type === 'active') {
                     return todo.status === TodoStatus.Active;
                 }
-                else {
-                    return todo.status === TodoStatus.Finished;
-                }
+                return todo.status === TodoStatus.Finished;
             });
             this.todosList = todosFiltered;
             this.renderTodo();
         });
     }
-    attach() {
-        this.divComponent.insertAdjacentElement('beforeend', this.element);
+    renderContent() {
+        const listId = `${this.type}-todo-list`;
+        this.element.querySelector('ul').id = listId;
+        this.element.querySelector('h2').textContent = this.type.toLocaleUpperCase() + ' TODOS';
     }
 }
 var TodoStatus;
@@ -137,6 +136,20 @@ class TodosState {
         for (const listenerFn of this.listeners) {
             listenerFn(this.todos.slice());
         }
+    }
+}
+/////TodoItem class
+class TodoItem extends Component {
+    constructor(hostId, todo) {
+        super('single-todo', hostId, false, todo.id);
+        this.todo = todo;
+        this.configure();
+        this.renderContent();
+    }
+    configure() { }
+    renderContent() {
+        this.element.querySelector('h2').textContent = this.todo.title;
+        this.element.querySelector('p').textContent = this.todo.description;
     }
 }
 const todosState = TodosState.getInstance();
