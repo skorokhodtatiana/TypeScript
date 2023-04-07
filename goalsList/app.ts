@@ -175,7 +175,7 @@ class TodosState {
 		this.instance = new TodosState();
 		return this.instance;
 	}
-  
+
 	addListener(listenerFn: Function) {
 		this.listeners.push(listenerFn);
 	}
